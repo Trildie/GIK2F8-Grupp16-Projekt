@@ -53,7 +53,7 @@ app.post('/games', async (req, res) => {
     const newGame = { id: maxGameId + 1, ...games };
     const newList = currentGames ? [...currentGames, newGame] : [newGame];
 
-    await fs.writeFile("./Games.json", JSON.stringify(newList));
+    await fs.writeFile("./games.json", JSON.stringify(newList));
     res.send(newGame);
   } catch (error) {
     res.status(500).send({ error: error.stack });
