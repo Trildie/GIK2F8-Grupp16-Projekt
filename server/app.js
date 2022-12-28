@@ -18,19 +18,26 @@ app
   });
 
 /* .get tar imot en route dit man skickar förfrågan.*/
-app.get('/games', async (req, res) => {
-  try {
+//app.get('/games', async (req, res) => {
+//  try {
+//    console.log("shitty nodeman");
     //Försöker läsa in från filen games.json
-    const games = await fs.readFile('./games.json');
-    res.send(JSON.parse(games)); //Skickar tillbaka det inlästa från filen men parsat med json.
-  } catch (error) {
-    res.status(500).send({ error }); //om ett error skicka status kod 500
-  }
-});
+//    const games = await fs.readFile('./games.json');
+//    res.send(JSON.parse(games)); //Skickar tillbaka det inlästa från filen men parsat med json.
+//  } catch (error) {
+//    res.status(500).send({ error }); //om ett error skicka status kod 500
+//  }
+//});
 //post för att lägga till nya spel, kollar också id så att flera inte kan använda samma id
 
+app.get('/task', async (req, res) => {
+  const games = await fs.readFile('./tasks.json');
+  res.send(games);
+});
 
-app.post("/games", async (req, res) => {
+
+
+app.post('/games', async (req, res) => {
   try {
     const games = req.body;
     const listBuffer = await fs.readFile("./games.json");
@@ -49,7 +56,7 @@ app.post("/games", async (req, res) => {
     await fs.writeFile("./Games.json", JSON.stringify(newList));
     res.send(newGame);
   } catch (error) {
-    res.status(500).send({ error });
+    res.status(500).send({ error: error.stack });
   }
 });
 
