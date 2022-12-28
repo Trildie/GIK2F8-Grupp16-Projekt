@@ -21,4 +21,15 @@ class Api {
           .catch((err) => console.log(err));
       }
 
+    //Delete
+    remove(id){
+        console.log(`Tar bort spel med id ${id}`);
+
+        return fetch(`${this.url}/${id}`, {
+            method: 'DELETE'
+        })
+            .then((result) => result)
+            .catch((err) => console.log(err));
+    }
+
 }
