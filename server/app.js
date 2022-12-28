@@ -30,8 +30,8 @@ app
 //});
 //post för att lägga till nya spel, kollar också id så att flera inte kan använda samma id
 
-app.get('/task', async (req, res) => {
-  const games = await fs.readFile('./tasks.json');
+app.get('/games', async (req, res) => {
+  const games = await fs.readFile('./games.json');
   res.send(games);
 });
 
