@@ -18,22 +18,22 @@ app
   });
 
 /* .get tar imot en route dit man skickar förfrågan.*/
-//app.get('/games', async (req, res) => {
-//  try {
-//    console.log("shitty nodeman");
+  app.get('/games', async (req, res) => {
+ try {
+   console.log("shitty nodeman");
     //Försöker läsa in från filen games.json
-//    const games = await fs.readFile('./games.json');
-//    res.send(JSON.parse(games)); //Skickar tillbaka det inlästa från filen men parsat med json.
-//  } catch (error) {
-//    res.status(500).send({ error }); //om ett error skicka status kod 500
-//  }
-//});
+   const games = await fs.readFile('./games.json');
+   res.send(JSON.parse(games)); //Skickar tillbaka det inlästa från filen men parsat med json.
+ } catch (error) {
+   res.status(500).send({ error }); //om ett error skicka status kod 500
+ }
+});
 //post för att lägga till nya spel, kollar också id så att flera inte kan använda samma id
 
-app.get('/games', async (req, res) => {
+/* app.get('/games', async (req, res) => {
   const games = await fs.readFile('./games.json');
   res.send(games);
-});
+}); */
 
 
 
