@@ -1,5 +1,5 @@
-gameForm.name.addEventListener('keyup',(e)=> validateField(e.target));
-gameForm.name.addEventListener('blur',(e)=> validateField(e.target));
+gameForm.title.addEventListener('keyup',(e)=> validateField(e.target));
+gameForm.title.addEventListener('blur',(e)=> validateField(e.target));
 
 gameForm.developer.addEventListener('input',(e)=> validateField(e.target));
 gameForm.developer.addEventListener('blur',(e)=> validateField(e.target));

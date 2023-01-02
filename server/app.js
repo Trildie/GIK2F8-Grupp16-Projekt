@@ -43,13 +43,16 @@ app.post('/games', async (req, res) => {
     const listBuffer = await fs.readFile("./games.json");
     const currentGames = JSON.parse(listBuffer);
     let maxGameId = 1;
+   
     if (currentGames && currentGames.length > 0) {
-      maxGameID = currentGames.reduce(
+      maxGameId = currentGames.reduce(
         (maxId, currentElement) =>
-          currentElement.id > maxId ? currentElement.id : maxId,
+        {  console.log(maxId);
+          return currentElement.id > maxId ? currentElement.id : maxId },
         maxGameId
       ); //ifsats som håller koll på att man inte duplicerar idn
-    }
+
+    }  console.log(maxGameId)
     const newGame = { id: maxGameId + 1, ...games };
     const newList = currentGames ? [...currentGames, newGame] : [newGame];
 
