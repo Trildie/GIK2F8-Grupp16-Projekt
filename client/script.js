@@ -7,15 +7,12 @@ gameForm.developer.addEventListener('blur',(e)=> validateField(e.target));
 gameForm.releaseDate.addEventListener('input',(e)=> validateField(e.target));
 gameForm.releaseDate.addEventListener('blur',(e)=> validateField(e.target));
 
-
-
-
-
+gameForm.addEventListener("submit", onSubmit);
 
 const gameListElement = document.getElementById('gameList');
 
-let nameValid = true;
-let descriptionValid = true;
+let titleValid = true;
+let developerValid = true;
 let releaseDateValid = true;
 
 
@@ -24,31 +21,31 @@ const api = new Api('http://localhost:5000/games');
 
 function validateField(field) {
 
-  const { name, value } = field;
+  const { title, value } = field;
 
   let = validationMessage = '';
-  switch (name) {
+  switch (title) {
 
-    case 'name': {
+    case 'title': {
       if (value.length < 2) {
-        nameValid = false;
-        validationMessage = "Fältet 'name' måste innehålla minst 2 tecken.";
+        titleValid = false;
+        validationMessage = "Fältet 'title' måste innehålla minst 2 tecken.";
       } else if (value.length > 100) {
-        nameValid = false;
+        titleValid = false;
         validationMessage =
-          "Fältet 'name' får inte innehålla mer än 100 tecken.";
+          "Fältet 'title' får inte innehålla mer än 100 tecken.";
       } else {
-        nameValid = true;
+        titleValid = true;
       }
       break;
     }
     case 'developer': {
       if (value.length > 500) {
-        descriptionValid = false;
+        developerValid = false;
         validationMessage =
           "Fältet 'developer' får inte innehålla mer än 500 tecken.";
       } else {
-        descriptionValid = true;
+        developerValid = true;
       }
       break;
     }
@@ -57,7 +54,7 @@ function validateField(field) {
         releaseDateValid = false;
         validationMessage = "Fältet 'Slutförd senast' är obligatorisk.";
       } else {
-        release6DateValid = true;
+        releaseDateValid = true;
       }
       break;
     }
@@ -71,7 +68,7 @@ function validateField(field) {
 function onSubmit(e) {
 
   e.preventDefault();
-  if (nameValid && developerValid && releaseDateValid) {
+  if (titleValid && developerValid && releaseDateValid) {
     
     console.log('Submit');
 
@@ -81,10 +78,10 @@ function onSubmit(e) {
 
 function saveGame() {
   const game = {
-    name: gameForm.name.value,
+    title: gameForm.title.value,
     developer: gameForm.developer.value,
     releaseDate: gameForm.releaseDate.value,
-    completed: false
+    
   };
   
   api.create(game).then((game) => {
@@ -114,14 +111,14 @@ function renderList() {
 
 
 
-function rendergame({ id, name, developer, releaseDate }) {
+function rendergame({ id, title, developer, releaseDate }) {
  
 
   
   let html = `
     <li class="select-none mt-2 py-2 border-b border-amber-300">
       <div class="flex items-center">
-        <h3 class="mb-3 flex-1 text-xl font-bold text-pink-800 uppercase">${name}</h3>
+        <h3 class="mb-3 flex-1 text-xl font-bold text-pink-800 uppercase">${title}</h3>
         <div>
           <span>${releaseDate}</span>
           <button onclick="deleteGame(${id})" class="inline-block bg-amber-500 text-xs text-amber-900 border border-white px-3 py-1 rounded-md ml-2">Ta bort</button>
