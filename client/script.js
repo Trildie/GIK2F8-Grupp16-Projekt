@@ -1,20 +1,15 @@
-gameForm.name.addEventListener('keyup', (e)=> validateField(e.target));
+gameForm.name.addEventListener('keyup',(e)=> validateField(e.target));
 gameForm.name.addEventListener('blur',(e)=> validateField(e.target));
 
-gameForm.developer.addEventlistener('input',(e)=> validateField(e.target));
-gameForm.developer.addEventlistener('blur',(e)=> validateField(e.target));
+gameForm.developer.addEventListener('input',(e)=> validateField(e.target));
+gameForm.developer.addEventListener('blur',(e)=> validateField(e.target));
 
-gameForm.releaseDate.addEventlistener('input',(e)=> validateField(e.target));
-gameForm.releaseDate.addEventlistener('blur',(e)=> validateField(e.target));
+gameForm.releaseDate.addEventListener('input',(e)=> validateField(e.target));
+gameForm.releaseDate.addEventListener('blur',(e)=> validateField(e.target));
 
-gameForm.name.addEventListener('keyup', (e) => validateField(e.target));
-gameForm.name.addEventListener('blur', (e) => validateField(e.target));
 
-gameForm.developer.addEventListener('input', (e) => validateField(e.target));
-gameForm.developer.addEventListener('blur', (e) => validateField(e.target));
 
-gameForm.releaseDate.addEventListener('input', (e) => validateField(e.target));
-gameForm.releaseDate.addEventListener('blur', (e) => validateField(e.target));
+
 
 
 const gameListElement = document.getElementById('gameList');
