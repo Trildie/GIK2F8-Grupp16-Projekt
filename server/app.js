@@ -20,7 +20,7 @@ app
 /* .get tar imot en route dit man skickar förfrågan.*/
   app.get('/games', async (req, res) => {
  try {
-   console.log("shitty nodeman");
+
     //Försöker läsa in från filen games.json
    const games = await fs.readFile('./games.json');
    res.send(JSON.parse(games)); //Skickar tillbaka det inlästa från filen men parsat med json.

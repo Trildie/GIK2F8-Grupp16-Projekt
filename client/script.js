@@ -116,12 +116,12 @@ function rendergame({ id, title, developer, releaseDate }) {
 
   
   let html = `
-    <li class="select-none mt-2 py-2 border-b border-amber-300">
+    <li class="select-none mt-2 py-2 border-b border-blue-300">
       <div class="flex items-center">
-        <h3 class="mb-3 flex-1 text-xl font-bold text-pink-800 uppercase">${title}</h3>
+        <h3 class="mb-3 flex-1 text-xl font-bold text-sky-500 uppercase">${title}</h3>
         <div>
           <span>${releaseDate}</span>
-          <button onclick="deleteGame(${id})" class="inline-block bg-amber-500 text-xs text-amber-900 border border-white px-3 py-1 rounded-md ml-2">Ta bort</button>
+          <button onclick="deleteGame(${id})" class="inline-block bg-blue-500 text-xs text-blue-900 border border-white px-3 py-1 rounded-md ml-2">Ta bort</button>
         </div>
       </div>`;
 
